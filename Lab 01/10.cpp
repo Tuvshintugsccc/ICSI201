@@ -27,7 +27,8 @@ int isPrime(int n){
 }
 
 int main(){
-    int num = 11;
+    int num;
+    cin >> num;
     // Өгөгдсөн тоо гэсэн учир өөрөө дур мэдэн нэг тоог оноож өгөв.
 
     int result = isPrime(num);
