@@ -3,43 +3,43 @@
 
 using namespace std;
 
-class Worker {
+class Employee{
     // Гишүүн өгөгдөл зарлана
     private:
-        int id;            // Ажилтаны дугаар
-        char name[20];     // Ажилтаны нэр
-        char position[10]; // Ажилтаны албан тушаал
-        float workedHours; // Ажилтаны ажилласан цаг
+        int id; // Дугаар
+        char name[20]; // Нэр
+        char position[10]; // Албан тушаал
+        float hours; // Ажилласан цаг
         
     // Гишүүн функц зарлах
     public:
-        Worker() {
+        Employee(){
             id = 0;
             strcpy(name, "");
             strcpy(position, "Ajiltan");
-            workedHours = 0;
+            hours = 0;
         };
 
-        void get_information() {
-            cout << "Ajiltanii dugaariig oruulna uu" << endl;
+        void input_info(){
+            cout << "Dugaar: ";
             cin >> id;
-            cout << "Ajiltanii neriig oruulna uu" << endl;
+            cout << "Ner: ";
             cin >> name;
-            cout << "Ajiltanii alban tushaaliig oruulna uu" << endl;
+            cout << "Tushaal: ";
             cin >> position;
-            cout << "Ajiltanii ajillasan tsagiig oruulna uu" << endl;
-            cin >> workedHours;
+            cout << "Tsag: ";
+            cin >> hours;
         };
 
-        void put_information() {
-            cout << "Ajiltanii dugaar: " << id << endl;
-            cout << "Ajiltanii ner: " << name << endl;
-            cout << "Ajiltanii alban tushaal: " << position << endl;
-            cout << "Ajiltanii ajillasan tsag: " << workedHours << endl;
+        void display_info(){
+            cout << "Dugaar: " << id << endl;
+            cout << "Ner: " << name << endl;
+            cout << "Tushaal: " << position << endl;
+            cout << "Tsag: " << hours;
         };
 
-        float calc_salary() {
-            float salary = workedHours * 200;
+        float calc_salary(){
+            float salary = hours * 200;
             string str1 = "Zahiral";
             if (position == str1) {
                 salary = calc_ceo_salary(salary);
@@ -47,13 +47,13 @@ class Worker {
             return salary;
         };
 
-        float calc_ceo_salary(float n) {
+        float calc_ceo_salary(float n){
             return n += 8000;
         };
 
-        bool add_workedHours(float hour) {
+        bool add_hours(float hour){
             if (hour > 0 && hour <= 24) {
-                workedHours += hour;
+                hours += hour;
                 return 1;
             } else
                 return 0;
@@ -61,14 +61,14 @@ class Worker {
 };
 
 int main() {
-    Worker employee;
-    employee.get_information();
+    Employee employee;
+    employee.input_info();
     cout << endl << "Ajiltanii medeelel" << endl;
-    employee.put_information();
+    employee.display_info();
     cout << endl << "Tsalin: " << employee.calc_salary() << endl;
-    employee.add_workedHours(6);
+    employee.add_hours(6);
     cout << endl << "Ajillasan tsagiig nemsniii daraa: " << endl;
-    employee.put_information();
+    employee.display_info();
 
     return 0;
 }
